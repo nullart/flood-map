@@ -1,69 +1,39 @@
-var DATASET_ID = 'ciwm29xyd00082tmocm5l6osb';
-var DATASETS_BASE = 'https://api.mapbox.com/datasets/v1/chennaiflood/' + DATASET_ID + '/';
+var DATASET_ID = 'ciy0s611i009w32o7ongsg2nh';
+var DATASETS_BASE = 'https://api.mapbox.com/datasets/v1/nullart/' + DATASET_ID + '/';
 // var selectedRoadsSource;
-var datasetsAccessToken = 'sk.eyJ1IjoiY2hlbm5haWZsb29kIiwiYSI6ImNpaG9mOGljdTBibmN0aGo3NWR6Y3Q0aXQifQ.X73YugnJDlhZEhxz2X86WA';
+var datasetsAccessToken = 'sk.eyJ1IjoibnVsbGFydCIsImEiOiJjaXkwbzA1YnUwMDlrMzJxaWZwNDBxeGY5In0.H-RrONYZO9hjVK35lbfG5Q';
 
 // Define map locations
 var mapLocation = {
     'reset': {
-        'center': [80.2, 13],
-        'zoom': 11,
+        'center': [124.6458,8.4776],
+        'zoom': 11.8,
         'pitch': 0,
         'bearing': 0
-    },
-    'pallikaranai': {
-        'center': [80.22, 12.926],
-        'zoom': 13.8,
-        'pitch': 45,
-        'bearing': 90
-    },
-    'adyar-river': {
-        'center': [80.261, 13.014],
-        'zoom': 13.8,
-        'pitch': 60,
-        'bearing': -64,
-        'highlight': 'water'
-    },
-    'cooum-river': {
-        'center': [80.281, 13.074],
-        'zoom': 13.8,
-        'pitch': 60,
-        'bearing': -64
-    },
-    'mudichur': {
-        'center': [80.06, 12.91],
-        'zoom': 13,
-        'pitch': 50,
-        'bearing': -10
-    },
-    'aminjikarai': {
-        'center': [80.21, 13.07],
-        'zoom': 13.8,
-        'pitch': 50,
-        'bearing': -10
-    },
-    'velachery': {
-        'center': [80.21, 12.97],
-        'zoom': 13.8,
-        'pitch': 50,
-        'bearing': -10
-    },
-    'omr': {
-        'center': [80.23, 12.88],
-        'zoom': 13,
-        'pitch': 70,
-        'bearing': -10
     }
 };
 
-
+if (!mapboxgl.supported()) {
+    alert('Your browser does not support Mapbox GL');
+} else {
 // Simple map
-mapboxgl.accessToken = 'pk.eyJ1IjoicGxhbmVtYWQiLCJhIjoiemdYSVVLRSJ9.g3lbg_eN0kztmsfIPxa9MQ';
+    mapboxgl.accessToken = 'pk.eyJ1IjoicGxhbmVtYWQiLCJhIjoiemdYSVVLRSJ9.g3lbg_eN0kztmsfIPxa9MQ';
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/planemad/cih4qzr0w0012awltzvpie7qa', //stylesheet location
+        hash: true
+    });
+}
+
+
+/*mapboxgl.accessToken = 'pk.eyJ1IjoibnVsbGFydCIsImEiOiJjaXkwbHV2eGkwMGEwMzNsbXcxYzcyb2YwIn0.o1Mv6BothDFsg8E9uDsCcA';
 var map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/planemad/cih4qzr0w0012awltzvpie7qa', //stylesheet location
+    style: 'mapbox://styles/mapbox/streets-v9', //stylesheet location
     hash: true
-});
+    ,interactive: false
+});*/
+
 mapLocate('reset');
 
 //Supress Tile errors
@@ -76,12 +46,8 @@ map.addControl(new mapboxgl.Navigation());
 var mapLayerCollection = {
     'water': ['water', 'waterway-river-canal', 'waterway-small'],
     'road-bridges': ['bridge-main', 'bridge-street', 'bridge-trunk', 'bridge-motorway'],
-    'cartodem': ['chennai-cartodem'],
     'buildings': ['building'],
     'road-subways': ['tunnel-motorway', 'tunnel-trunk', 'tunnel-main', 'tunnel-street'],
-    'chennai-relief-camps': ['chennai-relief-camps'],
-    'chennai-relief-camps-22nov': ['chennai-relief-camps-22nov'],
-    'chennai-water-logged-points': ['chennai-water-logged-points'],
     'road': [
         'road-main',
         'road-construction',
@@ -119,8 +85,8 @@ map.on('style.load', function (e) {
         'interactive': true,
         'paint': {
             'line-color': 'rgba(255,5,230,1)',
-            'line-width': 3,
-            'line-opacity': 0.6
+            'line-width': 6,
+            'line-opacity': 0.8
         }
     }, 'road-waterlogged');
 
@@ -280,7 +246,7 @@ map.on('style.load', function (e) {
                         //If yes,ADD it to the `selected-roads` layer
                         map.featuresAt(e.point, {radius: 5, includeGeometry: true, layer: mapLayerCollection['road']}, function (err, glFeatures) {
                             if (err) throw err;
-
+                            console.log('glFeatures',glFeatures);
                             var tempObj = {
                                 'type': 'Feature'
                             };

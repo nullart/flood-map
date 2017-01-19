@@ -9,3 +9,11 @@ body{
   width: 100%;
   min-height: 200px;
 }
+
+.margin20 {
+	margin: 20px;
+}
+
+.center {
+	text-align: center;
+}

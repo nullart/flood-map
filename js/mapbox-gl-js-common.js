@@ -98,5 +98,8 @@ function mapToggle(item) {
 function mapLocate(location) {
   map.setPitch(mapLocation[location].pitch);
   map.flyTo(mapLocation[location]);
-  if(location == "reset"){}
+  if(location == "reset"){
+    map.setPitch(mapLocation['reset'].pitch);
+    map.flyTo(mapLocation['reset']);
+  }
 }

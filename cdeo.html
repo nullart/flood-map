@@ -1,0 +1,75 @@
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>Flood Mapping by CdeO.ph</title>
+  <meta name="description" content="">
+  <meta name='viewport' content='initial-scale=1,maximum-scale=1,user-scalable=no' />
+
+  <link href="https://www.mapbox.com/base/latest/base.css" rel="stylesheet">
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v0.11.4/mapbox-gl.css' rel='stylesheet' />
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/mCustomScrollbar.min.css">
+  <link rel="stylesheet" type="text/css" href="css/cdeo.css">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=BGBGzwrA4m">
+    <link rel="icon" type="image/png" href="favicon-32x32.png?v=BGBGzwrA4m" sizes="32x32">
+    <link rel="icon" type="image/png" href="favicon-16x16.png?v=BGBGzwrA4m" sizes="16x16">
+    <link rel="manifest" href="manifest.json?v=BGBGzwrA4m">
+    <link rel="mask-icon" href="safari-pinned-tab.svg?v=BGBGzwrA4m" color="#5bbad5">
+    <link rel="shortcut icon" href="favicon.ico?v=BGBGzwrA4m">
+    <meta name="theme-color" content="#ffffff">
+
+
+  <script src="js/vendor/modernizr-2.8.3.min.js"></script>
+  <script src="js/vendor/md5.min.js"></script>
+
+  <script src='https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-supported/v1.2.0/mapbox-gl-supported.js'></script>
+</head>
+
+<body>
+  <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+  <!-- Content -->
+  <div id='map'></div>
+
+  <div id='sidebar' class='pin-left col3 pad2 dark fill-navy'>
+
+    <h1><a href="/">Flooded Streets</a></h1>
+    <h2><a href='#' onclick='mapLocate("reset");'>Cagayan de Oro City</a></h2>
+    <p>
+      <strong>
+        <span id="feature-count">...</span>
+      </strong> flooded roads reported</p>
+    <img class="space-bottom1" src="https://cloud.githubusercontent.com/assets/126868/11440554/86851886-9529-11e5-9bf5-55abcc223057.gif">
+    <p>This is a crowdsourced effort to map flooded roads in Cagayan de Oro City, Philippines. </p>
+
+    <p>It may take a while for updates to show.</p>   
+
+    <p>For Chrome users: if the map is not shown, in your browser, go to <br> <pre>chrome://flags/#ignore-gpu-blacklist</pre> <br>and click 'enable' as shown below. You need to restart your browser after this.
+    <img src="img/webgl_chrome.png">
+    </p> 
+
+  </div>
+
+  <span id='map-query'></span>
+
+  <div class="pad2 col8 space-bottom2 dark" style="position: absolute; z-index: 1000; bottom: 0; right: 0">
+    <div id="copy" class="pad2 fill-darken3 round prose prose-big col12" style="display: block;">Pink indicates flooded streets. Report a flooded street by zooming into the map and clicking it.</div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+  <script src="js/vendor/jquery.mCustomScrollbar.js"></script>
+  <script src="js/mapbox-gl-js-common.js"></script>
+  <script type="text/javascript" src="js/cdeo.js?4"></script>
+
+  
+
+</body>
+
+</html>
